@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team Heart Rwanda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-dark: #1a4f8a;
+      --blue-mid: #2068b0;
+      --blue-btn: #2272c3;
+      --text-dark: #222;
+      --text-gray: #555;
+      --bg-light: #f4f6f9;
+      --white: #ffffff;
+      --border: #dde3ec;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: #e8eaed;
+      color: var(--text-dark);
+    }
+
+    .page-wrapper {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 0 40px rgba(0,0,0,0.15);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 200px;
+      background: linear-gradient(135deg, #0d3360 0%, #1a5c9a 50%, #2480c8 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 40px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&q=60') center/cover no-repeat;
+      opacity: 0.28;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.92);
+      max-width: 480px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+
+    .btn-hero {
+      display: inline-block;
+      background: var(--blue-btn);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.2s;
+    }
+    .btn-hero:hover { background: #1a5fa8; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 36px 48px; }
+    .section-heading {
+      font-family: 'Merriweather', serif;
+      font-size: 1.25rem;
+      color: var(--blue-dark);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .section-heading.center { text-align: center; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--white); border-bottom: 1px solid var(--border); }
+    .about-inner { display: flex; gap: 32px; align-items: flex-start; }
+    .about-text { flex: 1; }
+    .about-text p {
+      font-size: 0.88rem;
+      color: var(--text-gray);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .about-img {
+      width: 200px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .about-img img { width: 100%; display: block; height: 150px; object-fit: cover; }
+
+    /* ── WHAT WE DO ── */
+    .what-we-do { background: var(--bg-light); border-bottom: 1px solid var(--border); }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-icon svg { width: 38px; height: 38px; }
+    .card h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .card p {
+      font-size: 0.75rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    /* ── EVENTS ── */
+    .events { background: var(--white); border-bottom: 1px solid var(--border); }
+    .events-subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      margin-top: -12px;
+      margin-bottom: 22px;
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .event-item { text-align: center; }
+    .event-item img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 5px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .event-item p {
+      font-size: 0.78rem;
+      color: var(--text-gray);
+    }
+
+    /* ── STORIES ── */
+    .stories { background: var(--bg-light); border-bottom: 1px solid var(--border); }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .story-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      gap: 14px;
+      padding: 14px;
+      align-items: flex-start;
+    }
+    .story-card img {
+      width: 80px;
+      height: 85px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .story-text h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .story-text p {
+      font-size: 0.77rem;
+      color: var(--text-gray);
+      line-height: 1.55;
+    }
+
+    /* ── LATEST UPDATES ── */
+    .updates { background: var(--white); }
+    .updates-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .update-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 16px;
+    }
+    .update-card h3 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--blue-mid);
+      margin-bottom: 8px;
+    }
+    .update-card p {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .btn-solid {
+      display: block;
+      width: 100%;
+      background: var(--blue-dark);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 11px 0;
+      border: none;
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-solid:hover { background: var(--blue-mid); }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Team Heart Rwanda</h1>
+      <p>Strengthening healthcare systems through data, technology, and local partnerships in Kigali and across Rwanda</p>
+      <a href="#" class="btn-hero">Explore Our Work in Rwanda</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <h2 class="section-heading">About Team Heart in Rwanda</h2>
+    <div class="about-inner">
+      <div class="about-text">
+        <p>Team Heart works in Rwanda to support healthcare systems through digital health tools, research support, and capacity building.</p>
+        <p>Our Kigali-based initiatives focus on empowering healthcare workers, improving patient data collection, and enabling better health outcomes through technology.</p>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400&q=70" alt="Healthcare workers reviewing data on tablet"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what-we-do">
+    <h2 class="section-heading center">What We Do in Kigali</h2>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="10" width="26" height="32" rx="3" fill="#d0e6fa"/>
+            <rect x="10" y="6" width="26" height="32" rx="3" fill="#2068b0"/>
+            <rect x="14" y="14" width="16" height="2.5" rx="1" fill="#fff"/>
+            <rect x="14" y="19" width="12" height="2.5" rx="1" fill="#a8d0f5"/>
+            <rect x="14" y="24" width="14" height="2.5" rx="1" fill="#a8d0f5"/>
+            <circle cx="34" cy="34" r="7" fill="#4caf50"/>
+            <rect x="33" y="30" width="2" height="8" rx="1" fill="#fff"/>
+            <rect x="30" y="33" width="8" height="2" rx="1" fill="#fff"/>
+          </svg>
+        </div>
+        <h3>Healthcare Data Systems</h3>
+        <p>Supporting teams with tools that streamline patient data unity and training workflows.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="14" stroke="#2068b0" stroke-width="3.5" fill="#d0e6fa"/>
+            <circle cx="22" cy="22" r="8" fill="#2068b0"/>
+            <line x1="32" y1="32" x2="42" y2="42" stroke="#2068b0" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="22" cy="22" r="4" fill="#fff"/>
+          </svg>
+        </div>
+        <h3>Research & Monitoring</h3>
+        <p>Best practices for tracking field data, connecting teams, and keeping training current.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="9" fill="#4caf50" opacity="0.85"/>
+            <circle cx="30" cy="18" r="9" fill="#2068b0" opacity="0.75"/>
+            <circle cx="24" cy="28" r="9" fill="#81d4fa" opacity="0.85"/>
+          </svg>
+        </div>
+        <h3>Local Partnerships</h3>
+        <p>Collaborating with local organizations to improve health outcomes and community care.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="14" r="6" fill="#2068b0"/>
+            <circle cx="32" cy="14" r="6" fill="#4caf50"/>
+            <path d="M6 38c0-8 6-13 10-13s10 5 10 13" fill="#2068b0" opacity="0.7"/>
+            <path d="M22 38c0-8 6-13 10-13s10 5 10 13" fill="#4caf50" opacity="0.7"/>
+          </svg>
+        </div>
+        <h3>Training & Capacity Building</h3>
+        <p>Training programs to build competency among frontline Kigali health system workers.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="events">
+    <h2 class="section-heading center">Our Events in Kigali</h2>
+    <p class="events-subtitle">Highlights from our recent activities and trainings in Rwanda</p>
+    <div class="events-grid">
+      <div class="event-item">
+        <img src="https://images.unsplash.com/photo-1584467735867-4297ae2ebcee?w=400&q=70" alt="Nurse training workshop"/>
+        <p>Nurse training workshop – Kigali</p>
+      </div>
+      <div class="event-item">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=70" alt="Digital health system training"/>
+        <p>Digital health system training</p>
+      </div>
+      <div class="event-item">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=70" alt="Community engagement session"/>
+        <p>Community engagement session</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories">
+    <h2 class="section-heading center">Stories From the Field</h2>
+    <div class="stories-grid">
+      <div class="story-card">
+        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200&q=70" alt="Nurse with technology"/>
+        <div class="story-text">
+          <h3>Empowering Nurses Through Technology</h3>
+          <p>Through hands-on training and digital tools, nurses in Kigali are improving the accuracy of patient data and the quality of care they provide.</p>
+        </div>
+      </div>
+      <div class="story-card">
+        <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=200&q=70" alt="Healthcare data decision"/>
+        <div class="story-text">
+          <h3>Data Supporting Better Healthcare Decisions</h3>
+          <p>By strengthening data collection systems, healthcare teams are better equipped to monitor outcomes and plan interventions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST UPDATES -->
+  <section class="updates">
+    <h2 class="section-heading center">Latest Updates from Rwanda</h2>
+    <div class="updates-grid">
+      <div class="update-card">
+        <h3>Digital Health Training in Kigali</h3>
+        <p>A look at our recent digital health workshops in Kigali.</p>
+        <a href="#" class="btn-solid">Contact Team Heart Rwanda</a>
+      </div>
+      <div class="update-card">
+        <h3>Why Accurate Health Data Matters</h3>
+        <p>The importance of how clinic data is improving healthcare outcomes.</p>
+        <a href="#" class="btn-solid">Read More Stories</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
